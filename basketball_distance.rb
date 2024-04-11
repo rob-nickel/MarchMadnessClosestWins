@@ -5,10 +5,22 @@ require 'uri'
 
 API_KEY = ''
 
-$direction = "north"
-#$direction = "east"
-#$direction = "west"
-#$direction = "south"
+# Input variables determine which direction to measure
+case ARGV[0]
+when 'n', 'north'
+  $direction = "north"
+when 's', 'south'
+  $direction = "south"
+when 'e', 'east'
+  $direction = "east"
+when 'w', 'west'
+  $direction = "west"
+else
+  $direction = "north"
+  #$direction = "east"
+  #$direction = "west"
+  #$direction = "south"
+end
 
 def get_coordinates(location)
   url = URI.parse("https://maps.googleapis.com/maps/api/geocode/json?address=#{location}&key=#{API_KEY}")

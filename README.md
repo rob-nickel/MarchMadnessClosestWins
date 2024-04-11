@@ -13,6 +13,12 @@ The goal of this project is to provide an interesting perspective on NCAA basket
 * Uses Google Maps API and Cloud Platform for geolocation data
 * Analyzes proximity between school coordinates and game locations using Python
 * Identifies extreme directional wins (north, south, east, west) using Ruby
+* Allows users to specify a direction when running the Ruby script using input parameters:
+	+ `ruby basketball_distance.rb n` will find the northernmost teams.
+	+ `ruby basketball_distance.rb s` will find the southernmost.
+	+ `ruby basketball_distance.rb e` will find the easternmost.
+	+ `ruby basketball_distance.rb w` will find the westernmost.
+	+ You can also use full directions like 'north', 'south', etc.
 
 ### Requirements
 
@@ -30,10 +36,10 @@ If not done already, make sure all required packages are correctly set up before
 
 ### Results
 If the closest team to the venue won every game, we would have a final four consisting of
-- UConn out of the East Region
-- Houston out of the South Region
-- Akron out of the Midwest Region
-- Saint Mary's out of the West Region
+- UConn from the East Region
+- Houston from the South Region
+- Akron from the Midwest Region
+- Saint Mary's from the West Region
 
 And the campion would be the Saint Mary's Gaels!
 
