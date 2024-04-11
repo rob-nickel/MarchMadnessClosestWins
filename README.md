@@ -1,4 +1,4 @@
-**March Madness Closest Wins**
+# March Madness Closest Wins
 
 Welcome to the March Madness Closest Wins project!
 
