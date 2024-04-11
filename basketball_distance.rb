@@ -5,10 +5,10 @@ require 'uri'
 
 API_KEY = ''
 
-#$direction = "north"
+$direction = "north"
 #$direction = "east"
 #$direction = "west"
-$direction = "south"
+#$direction = "south"
 
 def get_coordinates(location)
   url = URI.parse("https://maps.googleapis.com/maps/api/geocode/json?address=#{location}&key=#{API_KEY}")
