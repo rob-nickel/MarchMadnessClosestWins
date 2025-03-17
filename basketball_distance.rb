@@ -3,7 +3,7 @@ require 'json'
 require 'net/http'
 require 'uri'
 
-API_KEY = ''
+AZURE_KEY = ''
 
 # Input variables determine which direction to measure
 case ARGV[0]
@@ -23,14 +23,16 @@ else
 end
 
 def get_coordinates(location)
-  url = URI.parse("https://maps.googleapis.com/maps/api/geocode/json?address=#{location}&key=#{API_KEY}")
+  url = URI.parse("https://atlas.microsoft.com/search/poi/json?&subscription-key=#{AZURE_KEY}&api-version=1.0&query=#{location}&countrySet=US")
   response = Net::HTTP.get(url)
   data = JSON.parse(response)
   if data['error_message']
+    puts "ERROR #{data['error_message']}"
     raise Exception.new(data['error_message'])
   elsif data['results'] && data['results'].length > 0
-    address = data['results'][0]['geometry']['location']
-    return [address['lat'], address['lng']]
+    address = data['results'][0]['position']
+    #puts "#{location}: #{address['lat']}N, #{address['lon']}W"
+    return [address['lat'], address['lon']]
   end
 end
 
@@ -66,7 +68,7 @@ def determine_closer_team(team1, team2, location)
     return team1
   end
 
-  location_coords = get_coordinates(location)
+  #location_coords = get_coordinates(location)
 
   #puts "#{team1} #{team1_coords[0]} #{team2} #{team2_coords[0]}"
 
@@ -74,32 +76,40 @@ def determine_closer_team(team1, team2, location)
     team1_distance = team1_coords[0]
     team2_distance = team2_coords[0]
     if team1_distance < team2_distance
+        #puts "#{team2} beats #{team1}"
         return team2
     else
+        #puts "#{team1} beats #{team2}"
         return team1
     end
   elsif $direction == "east"
     team1_distance = team1_coords[1]
     team2_distance = team2_coords[1]
     if team1_distance < team2_distance
+        #puts "#{team2} beats #{team1}"
         return team2
     else
+        #puts "#{team1} beats #{team2}"
         return team1
     end
   elsif $direction == "west"
     team1_distance = team1_coords[1]
     team2_distance = team2_coords[1]
     if team1_distance > team2_distance
+        #puts "#{team2} beats #{team1}"
         return team2
     else
+        #puts "#{team1} beats #{team2}"
         return team1
     end
   elsif $direction == "south"
     team1_distance = team1_coords[0]
     team2_distance = team2_coords[0]
     if team1_distance > team2_distance
+        #puts "#{team2} beats #{team1}"
         return team2
     else
+        #puts "#{team1} beats #{team2}"
         return team1
     end
   else
@@ -159,4 +169,4 @@ def determine_closest_team(file_name)
   return champion
 end
 
-puts "Champion: #{determine_closest_team('data/marchMadness.txt')}!"
+puts "Champion: #{determine_closest_team('data/marchMadness2025.txt')}!"

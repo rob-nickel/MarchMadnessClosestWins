@@ -1,19 +1,19 @@
 # To run: python3 basketball_distance.py
-api_key = ""
+azure_key = ""
 
 import geopy
 from geopy.distance import geodesic
 import requests
 
 def get_coordinates(location):
-    url = f'https://maps.googleapis.com/maps/api/geocode/json?address={location}&key={api_key}'
+    url = f'https://atlas.microsoft.com/search/poi/json?&subscription-key={azure_key}&api-version=1.0&query={location}&countrySet=US'
     response = requests.get(url)
     data = response.json()
     if 'error_message' in data:
         raise Exception(data['error_message'])
     if 'results' in data and data['results']:
-        address = data['results'][0]['geometry']['location']
-        return (address['lat'], address['lng'])
+        address = data['results'][0]['position']
+        return (address['lat'], address['lon'])
 
 def determine_closer_team(team1, team2, location):
     if team1.find("College") != -1 :
@@ -34,8 +34,10 @@ def determine_closer_team(team1, team2, location):
     team2_distance = geodesic(team2_coords, location_coords).miles
 
     if team1_distance < team2_distance:
+        #print(f"Winner: {team1}, Loser: {team2}")
         return team1
     else:
+        #print(f"Winner: {team2}, Loser: {team1}")
         return team2
 
 def determine_closest_team(file_name):
@@ -88,4 +90,4 @@ def determine_closest_team(file_name):
     print(f"Final Four: {final_four}")
     return champion
 
-print(f"Champion: {determine_closest_team('data/marchMadness.txt')}!")
+print(f"Champion: {determine_closest_team('data/marchMadness2025.txt')}!")

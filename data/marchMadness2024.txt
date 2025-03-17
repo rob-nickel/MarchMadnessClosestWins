@@ -1,5 +1,5 @@
 EAST -- Boston
-Friday -- Brooklyn
+Friday -- New York City
 (1) UConn, (16) Stetson
 (9) Northwestern, (8) Florida Atlantic
 Friday -- Spokane
@@ -15,7 +15,7 @@ SOUTH -- Dallas
 Friday -- Memphis
 (1) Houston, (16) Longwood
 (9) Texas A&M, (8) Nebraska 
-Friday -- Brooklyn
+Friday -- New York City
 (4) Duke, (13) Vermont 
 (12) James Madison, (5) Wisconsin
 Thursday -- Pittsburgh
@@ -24,7 +24,7 @@ Thursday -- Pittsburgh
 Friday -- Indianapolis
 (10) Colorado, (7) Florida
 (2) Marquette, (15) Western Kentucky
-Midwest -- Detroit
+MIDWEST -- Detroit
 Friday -- Indianapolis
 (1) Purdue, (16) Grambling State
 (8) Utah State, (9) TCU
@@ -37,7 +37,7 @@ Thursday -- Pittsburgh
 Friday -- Charlotte
 (7) Texas, (10) Colorado State
 (2) Tennessee, (15) Saint Peter's
-West -- Los Angeles
+WEST -- Los Angeles
 Thursday -- Charlotte
 (1) North Carolina, (16) Wagner
 (9) Michigan State, (8) Mississippi State
